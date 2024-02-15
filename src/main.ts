@@ -9,6 +9,7 @@ import https from "https";
 import http from "http";
 import {Config} from "./config";
 import {FileUtils} from "./utils/file_utils";
+import {apiRouter} from "./router/api";
 
 import enableHSTS = NetUtils.enableHSTS;
 import checkFileExist = FileUtils.checkFileExist;
@@ -39,7 +40,7 @@ process.on('unhandledRejection', (err: Error, _) => {
 app.set('trust proxy', true);
 app.use(connectionLogger);
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction) => {
     enableHSTS(res);
     logger.info(`[${req.protocol}] Client request ${req.path} from ${req.ip}`);
     next();
@@ -48,11 +49,13 @@ app.use((req, res, next) => {
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
 
-app.use('*', (req, res) => {
+app.use("/api", apiRouter);
+
+app.use('*', (req: Request, res: Response) => {
     res.json({"message": "test"});
 });
 
-app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
+app.use((err: Error, _: Request, res: Response, __: NextFunction) => {
     logger.error(`Server Error! ${err.message}`);
     res.status(500);
     res.send("Server Error!")
@@ -65,7 +68,7 @@ if (serverConfig.https.enable) {
         logger.error("Can not find certificate key.");
         process.exit(-1);
     }
-    if (!checkFileExist(serverConfig.https.crtPath)){
+    if (!checkFileExist(serverConfig.https.crtPath)) {
         logger.error("Can not find certificate crt.");
         process.exit(-1);
     }

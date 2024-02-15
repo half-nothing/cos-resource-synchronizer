@@ -2,7 +2,7 @@ import axios from "axios";
 import {Config} from "../config";
 import {logger} from "../logger";
 import {FileUtils} from "./file_utils";
-import type {Response} from "express";
+import {Response} from "express";
 import checkDirExist = FileUtils.checkDirExist;
 import syncConfig = Config.syncConfig;
 
