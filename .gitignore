@@ -4,3 +4,4 @@
 /cache
 /package-lock.json
 /logs
+/node_modules

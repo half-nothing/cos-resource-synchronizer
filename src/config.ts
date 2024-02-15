@@ -31,9 +31,9 @@ function checkConfigFile(fileName: string): boolean {
     return true;
 }
 
-if (checkConfigFile("CosConfig.json") &&
+if (!(checkConfigFile("CosConfig.json") &&
     checkConfigFile("ServerConfig.json") &&
-    checkConfigFile("SyncConfig.json")) {
+    checkConfigFile("SyncConfig.json"))) {
     process.exit(-1);
 }
 
