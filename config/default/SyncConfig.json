@@ -1,0 +1,6 @@
+{
+  "useProxy": false,
+  "proxyUrl": "https://xxx.com/",
+  "repoUrl": "https://xxx.com/",
+  "modelsDataPath": "xxx.json"
+}

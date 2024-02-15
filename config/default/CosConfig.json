@@ -1,0 +1,10 @@
+{
+  "Secret": {
+    "SecretId": "123",
+    "SecretKey": "123"
+  },
+  "Bucket": {
+    "Bucket": "asd-123",
+    "Region": "ap-nanjing"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "https": {
+    "enable": false,
+    "enableHSTS": false,
+    "keyPath": "certificate/certificate.key",
+    "crtPath": "certificate/certificate.crt"
+  },
+  "port": 80
+}
